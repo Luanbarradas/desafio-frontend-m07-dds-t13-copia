@@ -167,6 +167,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-size: cover;
 }
 
 .highlight__info {
@@ -177,6 +178,10 @@ body {
   box-shadow: var(--shadow-color);
 
   padding: 16px;
+
+  /* scroll do Highlight do dia */
+  overflow: auto;
+  margin-bottom: 40px;
 }
 
 .highlight__title-rating {
@@ -323,4 +328,12 @@ body {
 
 .modal__average {
   background: #a785ed;
+}
+
+/* Para quando o filme não tiver capa */
+
+.decrease-poster {
+  width: auto;
+  height: 60%;
+  object-fit: cover;
 }
