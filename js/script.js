@@ -192,14 +192,16 @@ modal.addEventListener("click", (event) => {
 
 const showHighlightMovie = async (movies) => {
   try {
-    const movieId = movies[Math.floor(Math.random() * movies.length)].id;
+    const randomIndex = (Math.random() * movies.length) | 0;
+    const movieId = movies[randomIndex].id;
+
     const response = await axios.get(`${modalApiUrl}${movieId}?language=pt-BR`);
     const movie = response.data;
 
+    const formattedRating = movie.vote_average.toFixed(1);
+
     highlightTitle.textContent = movie.title;
-    highlightRating.innerHTML = `<img src="./assets/estrela.svg" alt="Estrela"> ${movie.vote_average.toFixed(
-      1
-    )}`;
+    highlightRating.innerHTML = `<img src="./assets/estrela.svg" alt="Estrela"> ${formattedRating}`;
     highlightGenres.textContent = movie.genres
       .map((genre) => genre.name)
       .join(", ");
