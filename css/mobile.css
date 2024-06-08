@@ -19,12 +19,14 @@
     align-items: center;
   }
 
-  .highlight__video {
-    width: 90vw;
-    max-height: 50vh;
+  .highlight__video,
+  .modal__img {
+    width: 90%;
+    max-height: 50%;
     background-position: center;
     background-size: cover;
   }
+
   .movie {
     width: 9rem;
     max-height: 14.4rem;
@@ -35,10 +37,29 @@
   }
 
   .modal {
-    padding: 1.25rem;
+    padding: 1rem;
+    overflow-x: hidden;
   }
 
   .modal__title {
-    font-size: 1.5rem;
+    font-size: 2rem;
+  }
+
+  .modal__close {
+    width: 2rem;
+  }
+
+  .modal__genre-average {
+    width: 100%;
+    align-items: flex-end;
+  }
+
+  .modal__genres {
+    flex-direction: column;
+  }
+
+  .modal__genre {
+    align-self: flex-start;
+    font-size: 1rem;
   }
 }
