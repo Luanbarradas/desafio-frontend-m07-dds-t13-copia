@@ -43,24 +43,15 @@ const loadMovies = async () => {
 document.addEventListener("DOMContentLoaded", loadMovies);
 
 const initializePagination = (movieData) => {
-  const moviesPerPage = 5;
   let currentPage = 0;
-  let totalPages = Math.ceil(movieData.length / moviesPerPage);
+  let moviesPerPage = getNumberOfPages();
+  let totalPages;
 
-  const renderMovies = (page) => {
+  const renderMovies = () => {
     moviesContainer.innerHTML = "";
 
-    let firstMovie = 0;
-    let lastMovie = 0;
-
-    for (let i = 0; i <= page; i++) {
-      if (i === page) {
-        firstMovie = lastMovie;
-      }
-      lastMovie += moviesPerPage;
-    }
-
-    lastMovie = Math.min(lastMovie, movieData.length);
+    const firstMovie = currentPage * moviesPerPage;
+    const lastMovie = Math.min(firstMovie + moviesPerPage, movieData.length);
 
     const moviesToDisplay = movieData.slice(firstMovie, lastMovie);
 
@@ -84,13 +75,22 @@ const initializePagination = (movieData) => {
     });
   };
 
+  const updatePagination = () => {
+    moviesPerPage = getNumberOfPages();
+    totalPages = Math.ceil(movieData.length / moviesPerPage);
+    currentPage = 0;
+    renderMovies();
+  };
+
+  window.addEventListener("resize", updatePagination);
+
   prevButton.addEventListener("click", () => {
     if (currentPage > 0) {
       currentPage--;
     } else {
       currentPage = totalPages - 1;
     }
-    renderMovies(currentPage);
+    renderMovies();
   });
 
   nextButton.addEventListener("click", () => {
@@ -99,10 +99,24 @@ const initializePagination = (movieData) => {
     } else {
       currentPage = 0;
     }
-    renderMovies(currentPage);
+    renderMovies();
   });
 
-  renderMovies(currentPage);
+  updatePagination();
+};
+
+const getNumberOfPages = () => {
+  const windowWidth = window.innerWidth;
+
+  return windowWidth <= 420
+    ? 1
+    : windowWidth <= 540
+    ? 2
+    : windowWidth <= 820
+    ? 3
+    : windowWidth <= 1024
+    ? 4
+    : 5;
 };
 
 input.addEventListener("keyup", async (event) => {
