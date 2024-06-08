@@ -21,8 +21,8 @@
 
   .highlight__video,
   .modal__img {
-    width: 90%;
-    max-height: 50%;
+    width: 90vw;
+    max-height: 50vh;
     background-position: center;
     background-size: cover;
   }
