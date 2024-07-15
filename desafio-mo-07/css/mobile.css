@@ -1,0 +1,65 @@
+@media screen and (max-width: 768px) {
+  .header__title {
+    font-size: 1.5rem;
+  }
+
+  .input {
+    width: 100%;
+    max-width: 18.75rem;
+  }
+
+  .btn-prev,
+  .btn-next {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .highlight {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .highlight__video,
+  .modal__img {
+    width: 90vw;
+    max-height: 50vh;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .movie {
+    width: 9rem;
+    max-height: 14.4rem;
+  }
+
+  .highlight__info {
+    max-width: 90%;
+  }
+
+  .modal {
+    padding: 1rem;
+    overflow-x: hidden;
+  }
+
+  .modal__title {
+    font-size: 2rem;
+  }
+
+  .modal__close {
+    width: 2rem;
+  }
+
+  .modal__genre-average {
+    width: 100%;
+    align-items: flex-end;
+  }
+
+  .modal__genres {
+    flex-direction: column;
+  }
+
+  .modal__genre {
+    align-self: flex-start;
+    font-size: 1rem;
+  }
+}
